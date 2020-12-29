@@ -1,5 +1,14 @@
 2020-12-29 Ismael Luceno <ismael@sourcemage.org>
 	* BUILD: Made mach use system python
+	* DETAILS: updated spell to 84.0.1
+	* DEPENDS: requires cbindgen >= 0.15.0 & nss 3.59.1
+	* patches/0001-avoid-redefinition.patch,
+	  patches/0002-sandbox-fork.patch: Fixed build against musl
+	* patches/0003-musl_memory_report.patch: Renamed
+	* patches/2004_fix_sandbox_lto.patch,
+	  patches/2006_pgo_gcc_spellchecker.patch,
+	  patches/2012_allow-non-ascii-chars.patch,
+	  patches/7000_sys_auxv_non_glibc.patch: removed, no longer needed
 
 2020-10-02 Florian Franzmann <siflfran@hawo.stw.uni-erlangen.de>
 	* DETAILS, BUILD: version 81.0.1

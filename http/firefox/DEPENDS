@@ -36,13 +36,11 @@ depends  libwebp       "--with-system-webp"                      &&
 
 depends  nspr               "--with-system-nspr"                 &&
 
-local NSS_BRANCH="3.57"                                          &&
-if spell_ok nss                                                  &&
-   is_version_less "$(installed_version nss)" "${NSS_BRANCH}"; then
-  depends  -sub "${NSS_BRANCH}" nss  "--with-system-nss"
-else
-  depends  nss  "--with-system-nss"
-fi                                                               &&
+vdepends <<< 'nss >= 3.59.1 --with-system-nss' &&
+local NSS_BRANCH=3.59 &&
+if spell_ok nss && is_version_less "$(installed_version nss)" "$NSS_BRANCH"; then
+  sub_depends nss "$NSS_BRANCH"
+fi &&
 
 #depends -sub "TSAFE SECURE_DELETE ENABLE_UNLOCK_NOTIFY ENABLE_DBSTAT_VTAB
 #SQLITE_ENABLE_FTS3" sqlite "--enable-system-sqlite"              &&
@@ -59,7 +57,7 @@ depends libnotify                                                &&
 depends pixman              "--enable-system-pixman"             &&
 
 depends rust                                                     &&
-depends cbindgen                                                 &&
+vdepends <<< 'cbindgen >= 0.15.0' &&
 
 depends nodejs                                                   &&
 
